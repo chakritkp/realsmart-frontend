@@ -1,7 +1,6 @@
 import axios from "axios"
 import cookies from 'cookie-universal'
 import { enqueueSnackbar } from "notistack";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const userServices = axios.create({
