@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import cookies from "cookie-universal";
 import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
+
 import SignUpForm from "../pages/SignUpForm";
 type AuthRouteProps = {
   children: React.ReactNode;
