@@ -1,0 +1,32 @@
+name: Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.20.0
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build the Vite app
+        env:
+          VITE_USER_SERVICES_URL: ${{ secrets.VITE_USER_SERVICES_URL }}
+        run: yarn build
+
+      - name: Deploy to Firebase
+        run: |
+          yarn add -g firebase-tools
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
