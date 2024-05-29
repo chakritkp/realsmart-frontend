@@ -28,5 +28,5 @@ jobs:
 
       - name: Deploy to Firebase
         run: | 
-          yarn add -g firebase-tools
+          yarn global add firebase-tools
           firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
