@@ -27,5 +27,5 @@ jobs:
         run: yarn build
 
       - name: Deploy to Firebase
-        run: yarn add -g firebase-tools
+        run: npm install -g firebase-tools
           firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
