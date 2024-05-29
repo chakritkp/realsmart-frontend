@@ -69,7 +69,7 @@ const useApi = () => {
                 enqueueSnackbar(data.message, { variant: "success" });
                 navigate('/home')
             }
-
+            return data.message
         } catch (error: any) {
             console.error('Error during sign in:', error.message);
             enqueueSnackbar("Invalid username or password", { variant: "error" });
@@ -94,6 +94,7 @@ const useApi = () => {
                 enqueueSnackbar(data.message, { variant: "success" });
                 navigate("/sign-in");
             }
+            return data.message
         } catch (error: any) {
             console.error('Error during sign in:', error.message);
             enqueueSnackbar("E-mail or phone number is already.", { variant: "error" });

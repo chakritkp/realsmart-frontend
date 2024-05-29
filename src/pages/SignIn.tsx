@@ -10,11 +10,14 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import useApi from "../hook/useApi";
 import { useNavigate } from "react-router-dom";
+import Loader from "../component/loader";
+
 
 type SignInProps = {};
 
@@ -27,6 +30,7 @@ const SignIn: React.FC<SignInProps> = ({}) => {
   const { useSignIn } = useApi();
   const navigate = useNavigate();
   const [inputProps, setInputProps] = useState<any>(null);
+  const [open, setOpen] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     username: yup
@@ -53,8 +57,12 @@ const SignIn: React.FC<SignInProps> = ({}) => {
 
   const handleSave = async (data: FormInput) => {
     try {
-      
-      await useSignIn(data);
+      const res = await useSignIn(data);
+      if (!res) {
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -80,6 +88,7 @@ const SignIn: React.FC<SignInProps> = ({}) => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Loader open={open} handleClose={() => {}} />
       <form onSubmit={handleSubmit(handleSave)} method="post">
         <Box
           sx={{

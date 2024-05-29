@@ -6,15 +6,19 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import useApi from "../hook/useApi";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Loader from "../component/loader";
 
 const SignUpForm = () => {
   const { useSignUp } = useApi();
   const navigate = useNavigate();
+  const [open, setOpen] = useState<boolean>(false);
 
   const schema = yup.object().shape({
     email: yup
@@ -49,7 +53,12 @@ const SignUpForm = () => {
 
   const handleSave = async (data: any) => {
     try {
-      await useSignUp(data);
+      const res = await useSignUp(data);
+      if (!res) {
+        setOpen(true);
+      } else {
+        setOpen(false);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -57,6 +66,7 @@ const SignUpForm = () => {
 
   return (
     <Container component="main" maxWidth="xs">
+      <Loader open={open} handleClose={() => {}} />
       <form onSubmit={handleSubmit(handleSave)} method="post">
         <Box
           sx={{
