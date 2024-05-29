@@ -73,6 +73,7 @@ const useApi = () => {
         } catch (error: any) {
             console.error('Error during sign in:', error.message);
             enqueueSnackbar("Invalid username or password", { variant: "error" });
+            return error.message
         }
 
     }
@@ -98,7 +99,7 @@ const useApi = () => {
         } catch (error: any) {
             console.error('Error during sign in:', error.message);
             enqueueSnackbar("E-mail or phone number is already.", { variant: "error" });
-
+            return error.messages
         }
     }
 
