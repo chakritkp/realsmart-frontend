@@ -86,7 +86,7 @@ const SignIn: React.FC<SignInProps> = ({}) => {
 
   return (
     <Container component="main" maxWidth="xs">
-      <Loader open={open} handleClose={() => {}} />
+      <Loader open={open} handleClose={() => setOpen(true)} />
       <form onSubmit={handleSubmit(handleSave)} method="post">
         <Box
           sx={{
