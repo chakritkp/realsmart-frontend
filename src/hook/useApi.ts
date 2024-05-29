@@ -4,7 +4,7 @@ import { enqueueSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 
 const userServices = axios.create({
-    baseURL: import.meta.env.VITE_USER_SERVICES_URL,
+    baseURL: 'https://realsmart-user-services.onrender.com/api-services',
 })
 
 const useApi = () => {
