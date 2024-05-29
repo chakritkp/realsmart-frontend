@@ -27,7 +27,6 @@ const useApi = () => {
     const useGetRole = async () => {
         try {
 
-
             const { data } = await userServices.get('/roles', {
                 withCredentials: true
             })
@@ -44,7 +43,6 @@ const useApi = () => {
             const isPhoneNumber = /^\d+$/.test(username);
             const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username);
 
-
             const headers = {
                 'email': null,
                 'password': password,
@@ -60,9 +58,6 @@ const useApi = () => {
             }
 
             const { data } = await userServices.post('/user-login-services', {}, { headers });
-
-
-
 
             if (!data) {
                 console.error('Signing failed')
