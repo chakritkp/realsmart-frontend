@@ -108,7 +108,6 @@ const useApi = () => {
 
     const useLogout = () => {
         try {
-            console.log('lllll')
             Cookies.remove('token')
             window.location.reload();
         } catch (error) {
