@@ -53,10 +53,9 @@ const SignUpForm = () => {
 
   const handleSave = async (data: any) => {
     try {
+      setOpen(true);
       const res = await useSignUp(data);
-      if (!res) {
-        setOpen(true);
-      } else {
+      if (res) {
         setOpen(false);
       }
     } catch (error) {

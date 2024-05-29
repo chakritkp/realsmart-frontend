@@ -18,7 +18,6 @@ import useApi from "../hook/useApi";
 import { useNavigate } from "react-router-dom";
 import Loader from "../component/loader";
 
-
 type SignInProps = {};
 
 type FormInput = {
@@ -57,10 +56,9 @@ const SignIn: React.FC<SignInProps> = ({}) => {
 
   const handleSave = async (data: FormInput) => {
     try {
+      setOpen(true);
       const res = await useSignIn(data);
-      if (!res) {
-        setOpen(true);
-      } else {
+      if (res) {
         setOpen(false);
       }
     } catch (error) {
