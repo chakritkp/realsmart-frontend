@@ -104,7 +104,7 @@ const useApi = () => {
     const useLogout = () => {
         try {
             Cookies.remove('token')
-            window.location.reload();
+            navigate('/sign-in')
         } catch (error) {
 
         }

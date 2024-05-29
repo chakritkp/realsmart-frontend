@@ -47,7 +47,6 @@ let Routers = () => {
           </AuthTokenRoute>
         }
       />
-      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
